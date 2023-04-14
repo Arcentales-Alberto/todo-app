@@ -1,0 +1,1 @@
+export { TRPC } from './trpc'
