@@ -1,14 +1,13 @@
-version: '3.8'
-
 services:
     
     db:
       image: mongo
       container_name: trpcdb_container
       volumes:
-        - ./server/src/scripts/mongo_init.js:/docker-entrypoint-initdb.d/1.js   
+        - ./server/src/scripts/mongo_init.js:/docker-entrypoint-initdb.d/1.js  
+        - ./data/mongo:/data/db 
       ports:
-        - "27020:27017" 
+        - "27017:27017" 
   
     server:
       container_name: server_container 
@@ -17,7 +16,7 @@ services:
       env_file:
       - ./.env
       environment:
-        - MONGO_URI=${MONGO_URL}
+        - MONGO_URL=${MONGO_URL}
       depends_on:
         - db    
       ports:
