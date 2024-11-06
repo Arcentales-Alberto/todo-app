@@ -22,3 +22,6 @@ data/
 .idea/
 *.code-workspace
 *.excalidraw
+
+# Environments variables file
+.env
